@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إبراهيم ناصف — Video Editor & Motion Designer</title>
+<meta name="description" content="Ibrahim Magdy Nasef — video editor & motion designer. After Effects, Premiere Pro, CapCut.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Manrope:wght@300;400;600&family=DM+Mono:wght@400;500&family=Readex+Pro:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0a09; --bg2:#151210; --card:#1b1714; --line:#2c2622;
+  --ink:#f4ede4; --mute:#9c9087; --accent:#e5382b; --accent2:#f3b562;
+  --display:"Bricolage Grotesque","Readex Pro",system-ui,sans-serif;
+  --body:"Manrope","Readex Pro",system-ui,sans-serif;
+  --mono:"DM Mono",ui-monospace,monospace;
+  --pad:clamp(16px,5vw,72px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* film grain */
+body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:100;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-4%)}60%{transform:translate(-4%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+
+/* nav */
+nav{position:fixed;top:0;inset-inline:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:18px var(--pad);transition:background .3s,backdrop-filter .3s}
+nav.solid{background:rgba(12,10,9,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--display);font-weight:900;font-size:22px;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+.logo i{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent);animation:rec 1.6s infinite}
+@keyframes rec{50%{opacity:.25}}
+.nav-links{display:flex;gap:28px;align-items:center;font-size:15px}
+.nav-links a{color:var(--mute);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.lang{font-family:var(--mono);font-size:13px;border:1px solid var(--line);border-radius:99px;padding:6px 14px;transition:border-color .2s}
+.lang:hover{border-color:var(--accent)}
+@media(max-width:700px){.nav-links a{display:none}}
+
+/* hero */
+.hero{min-height:100svh;display:grid;align-content:center;padding:120px var(--pad) 60px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(60% 50% at 80% 20%,rgba(229,56,43,.18),transparent 70%),
+  radial-gradient(50% 40% at 10% 90%,rgba(243,181,98,.10),transparent 70%);pointer-events:none}
+.tag{font-family:var(--mono);font-size:13px;color:var(--accent2);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.tag::before{content:"";width:34px;height:1px;background:currentColor}
+h1{font-family:var(--display);font-weight:800;line-height:.98;font-size:clamp(48px,10vw,160px);letter-spacing:-.02em}
+[dir=ltr] h1{letter-spacing:-.04em}
+h1 .red{color:var(--accent)}
+h1 span{display:block;overflow:hidden}
+h1 span b{display:block;font-weight:inherit;transform:translateY(105%);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+h1 span:nth-child(2) b{animation-delay:.12s}
+@keyframes rise{to{transform:none}}
+.role{font-family:var(--display);font-weight:300;font-size:clamp(20px,2.6vw,34px);color:var(--mute);margin-top:18px}
+.role strong{color:var(--ink);font-weight:500}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:99px;font-family:var(--display);font-weight:500;font-size:15px;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-red{background:var(--accent);color:#fff}
+.btn-ghost{border:1px solid var(--line)}
+.btn-ghost:hover{background:var(--card)}
+.hero-meta{position:absolute;bottom:28px;inset-inline:var(--pad);display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--mute)}
+.scroll{display:flex;align-items:center;gap:8px}
+.scroll::after{content:"";width:1px;height:28px;background:linear-gradient(var(--mute),transparent);animation:drip 1.8s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding:22px 0;background:var(--bg2)}
+.marquee-track{display:flex;gap:48px;width:max-content;animation:mq 38s linear infinite;font-family:var(--display);font-weight:700;font-size:clamp(22px,3vw,38px);white-space:nowrap}
+[dir=rtl] .marquee-track{animation-name:mq-rtl}
+.marquee-track span{display:flex;align-items:center;gap:48px}
+.marquee-track span::after{content:"✦";color:var(--accent);font-size:.6em}
+.marquee-track .o{-webkit-text-stroke:1px var(--ink);color:transparent}
+@keyframes mq{to{transform:translateX(-50%)}}
+@keyframes mq-rtl{to{transform:translateX(50%)}}
+
+/* sections */
+section{padding:clamp(70px,10vw,140px) var(--pad)}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.sec-num{font-family:var(--mono);color:var(--accent);font-size:13px;margin-bottom:10px}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,6vw,84px);line-height:1;letter-spacing:-.02em}
+
+/* showreel */
+.reel{position:relative;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:var(--card);border:1px solid var(--line);cursor:pointer}
+.reel video,.reel img{width:100%;height:100%;object-fit:cover}
+.reel-empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;
+  background:repeating-linear-gradient(-45deg,transparent 0 22px,rgba(255,255,255,.015) 22px 44px)}
+.play{width:clamp(70px,9vw,110px);aspect-ratio:1;border-radius:50%;background:var(--accent);display:grid;place-items:center;margin:0 auto 18px;box-shadow:0 0 0 0 rgba(229,56,43,.5);animation:pulse 2.2s infinite}
+.play svg{width:32%;fill:#fff;margin-inline-start:6%}
+[dir=rtl] .play svg{transform:none}
+@keyframes pulse{70%{box-shadow:0 0 0 26px rgba(229,56,43,0)}100%{box-shadow:0 0 0 0 rgba(229,56,43,0)}}
+.reel-empty p{font-family:var(--display);font-size:clamp(18px,2.4vw,28px)}
+.reel-empty small{color:var(--mute);font-family:var(--mono);font-size:12px}
+.corners::before,.corners::after{content:"";position:absolute;width:26px;height:26px;border:2px solid var(--accent2);z-index:2}
+.corners::before{top:18px;inset-inline-start:18px;border-inline-end:0;border-bottom:0}
+.corners::after{bottom:18px;inset-inline-end:18px;border-inline-start:0;border-top:0}
+
+/* filters + grid */
+.filters{display:flex;flex-wrap:wrap;gap:10px}
+.chip{padding:9px 18px;border-radius:99px;border:1px solid var(--line);font-size:14px;color:var(--mute);transition:all .2s}
+.chip:hover{color:var(--ink)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip sup{font-family:var(--mono);font-size:10px;margin-inline-start:4px;opacity:.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:22px;grid-auto-flow:dense}
+.card{position:relative;border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--line);cursor:pointer;
+  opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s,border-color .3s}
+.card.in{opacity:1;transform:none}
+.card:hover{border-color:var(--accent)}
+.card.horizontal{grid-column:span 2;aspect-ratio:16/9}
+.card.vertical{aspect-ratio:9/16}
+.card.square{aspect-ratio:1}
+@media(max-width:680px){.card.horizontal{grid-column:auto}}
+@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:12px}.card h3{font-size:15px}.card .info{padding:14px}}
+.card video,.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.card:hover video,.card:hover img{transform:scale(1.04)}
+.card .info{position:absolute;inset-inline:0;bottom:0;padding:22px;background:linear-gradient(transparent,rgba(0,0,0,.88));z-index:2}
+.card .cat{font-family:var(--mono);font-size:11px;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em}
+.card h3{font-family:var(--display);font-weight:700;font-size:20px;line-height:1.3;margin-top:4px}
+.card .client{color:var(--mute);font-size:13px}
+.card .mini-play{position:absolute;top:16px;inset-inline-end:16px;z-index:2;width:42px;height:42px;border-radius:50%;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);display:grid;place-items:center;opacity:0;transition:opacity .3s}
+.card:hover .mini-play{opacity:1}
+.card .mini-play svg{width:14px;fill:#fff}
+.card.ph{cursor:default;display:grid;place-items:center;
+  background:linear-gradient(160deg,var(--card),var(--bg2))}
+.card.ph:hover{border-color:var(--line)}
+.ph-inner{text-align:center;color:var(--mute);padding:20px}
+.ph-inner b{display:block;font-family:var(--display);font-size:46px;color:var(--line);font-weight:900;line-height:1}
+.ph-inner span{font-family:var(--mono);font-size:12px}
+
+/* news desk */
+.news{background:linear-gradient(180deg,var(--bg),#130d0b 50%,var(--bg))}
+.news-intro{color:var(--mute);max-width:560px;font-size:17px}
+.channels{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.channels span{font-family:var(--mono);font-size:12px;padding:7px 14px;border-radius:8px;border:1px solid var(--line);background:var(--card)}
+.channels span b{color:var(--accent);font-weight:500}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:20px;overflow-x:auto;padding-bottom:14px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.rail .card{scroll-snap-align:start;aspect-ratio:9/16;border-radius:26px;border-width:6px;border-color:#262019}
+.rail .card:hover{border-color:var(--accent)}
+.live{position:absolute;top:16px;inset-inline-start:16px;z-index:2;font-family:var(--mono);font-size:10px;letter-spacing:.1em;background:var(--accent);color:#fff;padding:4px 8px;border-radius:4px}
+
+/* experience */
+.xp{display:grid;gap:0;border-top:1px solid var(--line)}
+.xp-row{display:grid;grid-template-columns:180px 1fr auto;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line);transition:padding .3s}
+.xp-row:hover{padding-inline-start:12px}
+.xp-row .when{font-family:var(--mono);font-size:13px;color:var(--mute)}
+.xp-row h3{font-family:var(--display);font-weight:700;font-size:clamp(22px,3vw,36px);line-height:1.1}
+.xp-row .what{color:var(--accent2);font-size:15px}
+.xp-row.now h3::after{content:"●";color:var(--accent);font-size:.4em;vertical-align:middle;margin-inline-start:12px;animation:rec 1.6s infinite}
+@media(max-width:640px){.xp-row{grid-template-columns:1fr;gap:4px}}
+.also{margin-top:6px;color:var(--mute);font-size:14px}
+.also b{color:var(--ink);font-weight:600}
+.sw{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.sw span{font-size:13px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);direction:ltr}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+@media(max-width:560px){.facts{grid-template-columns:1fr}}
+.fact{border-top:1px solid var(--line);padding-top:14px}
+.fact b{font-family:var(--display);font-weight:700;font-size:clamp(18px,1.8vw,24px);display:block;line-height:1.2}
+.fact span{color:var(--mute);font-size:13px}
+
+/* about */
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,6vw,90px);align-items:start;background:var(--bg2);border-block:1px solid var(--line)}
+@media(max-width:860px){.about{grid-template-columns:1fr}}
+.bio{font-size:clamp(19px,2vw,25px);font-weight:300;line-height:1.75}
+.bio em{font-style:normal;color:var(--accent2)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.stat{border-top:1px solid var(--line);padding-top:14px}
+.stat b{font-family:var(--display);font-size:clamp(26px,3vw,40px);font-weight:900;display:block}
+.stat span{color:var(--mute);font-size:13px}
+.tools{display:grid;gap:14px}
+.tool{display:flex;align-items:center;gap:18px;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--card);transition:transform .3s}
+.tool:hover{transform:translateX(calc(var(--d,1)*-6px))}
+[dir=ltr] .tool:hover{transform:translateX(6px)}
+.ico{width:58px;height:58px;border-radius:13px;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:22px;flex:none;direction:ltr}
+.ai{background:linear-gradient(135deg,#e5382b,#f3b562);color:#fff;border:0}
+.ae{background:#00005b;color:#9999ff;border:2px solid #9999ff}
+.pr{background:#00005b;color:#ea77ff;border:2px solid #ea77ff}
+.cc{background:#000;color:#fff;border:2px solid #fff}
+.tool h4{font-family:var(--display);font-weight:500;font-size:18px;direction:ltr;text-align:start}
+.tool p{color:var(--mute);font-size:14px}
+.styles{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.styles span{font-size:13px;padding:6px 14px;border-radius:99px;background:rgba(243,181,98,.08);color:var(--accent2);border:1px solid rgba(243,181,98,.2)}
+
+/* contact */
+.contact{text-align:center}
+.contact h2{font-size:clamp(42px,9vw,130px)}
+.contact h2 a{color:var(--accent);transition:opacity .2s}
+.contact h2 a:hover{opacity:.8}
+.contact p{color:var(--mute);margin:20px auto 40px;max-width:560px}
+.socials{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+.socials a{padding:12px 22px;border:1px solid var(--line);border-radius:99px;font-family:var(--mono);font-size:13px;transition:all .2s}
+.socials a:hover{border-color:var(--accent);color:var(--accent)}
+footer{padding:28px var(--pad);border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--mute);font-family:var(--mono);font-size:12px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(5,4,4,.94);display:none;place-items:center;padding:16px}
+.lb.open{display:grid}
+.lb video{max-height:88vh;max-width:min(100%,1400px);border-radius:14px;background:#000}
+.lb-close{position:absolute;top:18px;inset-inline-end:18px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);font-size:22px}
+.lb-title{position:absolute;bottom:18px;inset-inline:0;text-align:center;font-family:var(--display);color:var(--mute)}
+
+[dir=rtl]{--display:"Readex Pro",system-ui,sans-serif;--body:"Readex Pro",system-ui,sans-serif}
+/* Arabic text must never get mono font or letter-spacing (breaks letter joining) */
+[dir=rtl] .tag,[dir=rtl] .scroll,[dir=rtl] .ph-inner span,[dir=rtl] .card .cat,[dir=rtl] .reel-empty small{font-family:var(--body);letter-spacing:0}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.card{opacity:1;transform:none}h1 span b{transform:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#top" class="logo"><i></i><span data-ar="ناصف" data-en="NASEF">ناصف</span></a>
+  <div class="nav-links">
+    <a href="#work" data-ar="الأعمال" data-en="Work">الأعمال</a>
+    <a href="#news" data-ar="الأخبار" data-en="Newsroom">الأخبار</a>
+    <a href="#about" data-ar="عنّي" data-en="About">عنّي</a>
+    <a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
+    <button class="lang" id="langBtn">EN</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="tag" data-ar="متاح لمشاريع جديدة" data-en="Available for new projects">متاح لمشاريع جديدة</div>
+  <h1>
+    <span><b data-ar="إبراهيم" data-en="Ibrahem">إبراهيم</b></span>
+    <span><b><span class="red" data-ar="ناصف." data-en="Nasef.">ناصف.</span></b></span>
+  </h1>
+  <p class="role" data-ar="<strong>فيديو إديتور</strong> و<strong>موشن ديزاينر</strong> — كل أنواع الفيديو، بكل الستايلات." data-en="<strong>Video Editor</strong> & <strong>Motion Designer</strong> — every format, every style."><strong>فيديو إديتور</strong> و<strong>موشن ديزاينر</strong> — كل أنواع الفيديو، بكل الستايلات.</p>
+  <div class="hero-cta">
+    <a href="#work" class="btn btn-red" data-ar="شوف الشغل ↓" data-en="View work ↓">شوف الشغل ↓</a>
+    <a href="#contact" class="btn btn-ghost" data-ar="اشتغل معايا" data-en="Work with me">اشتغل معايا</a>
+  </div>
+  <div class="hero-meta">
+    <span>Ae · Pr · CapCut</span>
+    <span class="scroll" data-ar="انزل" data-en="Scroll">انزل</span>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="mq"></div>
+</div>
+
+<section id="reel">
+  <div class="sec-head reveal">
+    <div><div class="sec-num">01</div><h2 data-ar="الشوريل" data-en="Showreel">الشوريل</h2></div>
+  </div>
+  <div class="reel corners reveal" id="reelBox"></div>
+</section>
+
+<section id="work">
+  <div class="sec-head reveal">
+    <div><div class="sec-num">02</div><h2 data-ar="كل الشغل" data-en="All work">كل الشغل</h2></div>
+    <div class="filters" id="filters"></div>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="news" id="news">
+  <div class="sec-head reveal">
+    <div><div class="sec-num">03</div><h2 data-ar="غرفة الأخبار" data-en="Newsroom">غرفة الأخبار</h2>
+      <p class="news-intro" data-ar="تقارير وقصص إخبارية سريعة للسوشيال ميديا — من مونتاجي في MBC Group: العربية والحدث." data-en="Fast-turnaround news stories and social reports — edited at MBC Group for Al Arabiya &amp; Al Hadath.">تقارير وقصص إخبارية سريعة للسوشيال ميديا — من مونتاجي في MBC Group: العربية والحدث.</p>
+      <div class="channels"><span><b>●</b> Al Arabiya</span><span><b>●</b> Al Hadath</span><span>MBC Group · 2023 – Now</span></div>
+    </div>
+  </div>
+  <div class="rail" id="rail"></div>
+</section>
+
+<section id="experience">
+  <div class="sec-head reveal">
+    <div><div class="sec-num">04</div><h2 data-ar="الخبرة" data-en="Experience">الخبرة</h2></div>
+    <a class="btn btn-ghost" href="cv-ibrahem-nasef.pdf" download data-ar="حمّل السي في ↓" data-en="Download CV ↓">حمّل السي في ↓</a>
+  </div>
+  <p class="news-intro reveal" style="margin:-20px 0 30px" data-ar="اشتغلت في أماكن كتير، منها ON TV وM&amp;S Group وMBC Group (العربية والحدث)، غير شغل فريلانس كتير جداً مع عملاء من مجالات مختلفة." data-en="I've worked with many places — including ON TV, M&amp;S Group and MBC Group (Al Arabiya &amp; Al Hadath) — plus a long list of freelance clients across every industry.">اشتغلت في أماكن كتير، منها ON TV وM&amp;S Group وMBC Group (العربية والحدث)، غير شغل فريلانس كتير جداً مع عملاء من مجالات مختلفة.</p>
+  <div class="xp reveal">
+    <div class="xp-row now"><span class="when" data-ar="نوفمبر 2023 — الآن" data-en="Nov 2023 — Now">نوفمبر 2023 — الآن</span><h3>MBC Group · Al Arabiya &amp; Al Hadath</h3><span class="what">Video Editor</span></div>
+    <div class="xp-row"><span class="when">Oct 2020 — Aug 2021</span><h3>M&amp;S Group</h3><span class="what">Video Editor</span></div>
+    <div class="xp-row"><span class="when">Aug 2018 — Aug 2019</span><h3>ON TV</h3><span class="what">Video Editor</span></div>
+    <div class="xp-row"><span class="when" data-ar="2018 — الآن" data-en="2018 — Now">2018 — الآن</span><h3 data-ar="فريلانس" data-en="Freelance">فريلانس</h3><span class="what" data-ar="عملاء كتير — موشن، ريلز، إعلانات" data-en="Many clients — motion, reels, ads">عملاء كتير — موشن، ريلز، إعلانات</span></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="reveal">
+    <div class="sec-num">05</div>
+    <h2 style="margin-bottom:30px" data-ar="عنّي" data-en="About">عنّي</h2>
+    <p class="bio" data-ar="أنا <em>إبراهيم مجدي ناصف</em>، فيديو إديتور وموشن ديزاينر. بعمل كل أنواع الفيديوهات وبكل الستايلات — من القصص الوثائقية والريلز السريعة لحد الإعلانات والموشن جرافيك والكاينتك تايبوجرافي وكل أنواع فيديوهات الذكاء الاصطناعي. هدفي إن كل ثانية في الفيديو تشد المشاهد وتخدم القصة." data-en="I'm <em>Ibrahem Magdy Nasef</em>, a video editor and motion designer. I make every kind of video in every style — documentary storytelling, fast-paced reels, ads, motion graphics, kinetic typography and every kind of AI-generated video. My goal: every second earns the viewer's attention and serves the story.">أنا <em>إبراهيم مجدي ناصف</em>، فيديو إديتور وموشن ديزاينر. بعمل كل أنواع الفيديوهات وبكل الستايلات — من القصص الوثائقية والريلز السريعة لحد الإعلانات والموشن جرافيك والكاينتك تايبوجرافي. هدفي إن كل ثانية في الفيديو تشد المشاهد وتخدم القصة.</p>
+    <div class="facts">
+      <div class="fact"><b>27</b><span data-ar="سنة" data-en="Years old">سنة</span></div>
+      <div class="fact"><b data-ar="بكالوريوس إعلام" data-en="B.A. Media">بكالوريوس إعلام</b><span data-ar="كلية الآداب، قسم العلاقات العامة · 2022" data-en="Public Relations, Faculty of Arts · 2022">كلية الآداب، قسم العلاقات العامة · 2022</span></div>
+      <div class="fact"><b data-ar="عربي · إنجليزي · ألماني" data-en="Arabic · English · German">عربي · إنجليزي · ألماني</b><span data-ar="العربي لغتي الأم — إنجليزي وألماني كويس" data-en="Native Arabic — good English &amp; German">العربي لغتي الأم — إنجليزي وألماني كويس</span></div>
+    </div>
+    <div class="styles" id="styles"></div>
+  </div>
+  <div class="tools reveal">
+    <div class="tool"><div class="ico ae">Ae</div><div><h4>After Effects</h4><p data-ar="موشن جرافيك، 3D، كاينتك تايب، كومبوزيتنج" data-en="Motion graphics, 3D, kinetic type, compositing">موشن جرافيك، 3D، كاينتك تايب، كومبوزيتنج</p></div></div>
+    <div class="tool"><div class="ico pr">Pr</div><div><h4>Premiere Pro</h4><p data-ar="مونتاج، ستوري تيلنج، تلوين، صوت" data-en="Editing, storytelling, color, sound">مونتاج، ستوري تيلنج، تلوين، صوت</p></div></div>
+    <div class="tool"><div class="ico cc">Cc</div><div><h4>CapCut</h4><p data-ar="ريلز وشورتس سريعة للسوشيال ميديا" data-en="Fast reels &amp; shorts for social">ريلز وشورتس سريعة للسوشيال ميديا</p></div></div>
+    <div class="tool"><div class="ico ai">AI</div><div><h4 data-ar="فيديوهات الذكاء الاصطناعي" data-en="AI Video Production">فيديوهات الذكاء الاصطناعي</h4><p data-ar="كل أنواع فيديوهات الـAI — بختار الموديل المناسب لكل شغلانة: فيديو، صور، صوت، وأفاتار" data-en="Every kind of AI video — I pick the right model for each job: video, image, voice and avatars">كل أنواع فيديوهات الـAI — بختار الموديل المناسب لكل شغلانة: فيديو، صور، صوت، وأفاتار</p>
+      <div class="sw" id="aiw" style="margin-top:12px"></div></div></div>
+    <div class="also"><span data-ar="وكمان بشتغل على:" data-en="Also fluent in:">وكمان بشتغل على:</span>
+      <div class="sw" id="sw"></div></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="sec-num reveal">06</div>
+  <h2 class="reveal"><span data-ar="عندك فكرة؟" data-en="Got an idea?">عندك فكرة؟</span><br><a id="mainLink" href="#" data-ar="يلا نشتغل." data-en="Let's talk.">يلا نشتغل.</a></h2>
+  <p class="reveal" data-ar="ابعتلي تفاصيل مشروعك وهرد عليك في أسرع وقت." data-en="Send me your project details and I'll get back to you fast.">ابعتلي تفاصيل مشروعك وهرد عليك في أسرع وقت.</p>
+  <div class="socials reveal" id="socials"></div>
+</section>
+
+<footer>
+  <span>© <span id="yr"></span> Ibrahem Magdy Nasef</span>
+  <span>Video Editor · Motion Designer</span>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  <video id="lbVideo" controls playsinline></video>
+  <div class="lb-title" id="lbTitle"></div>
+</div>
+
+<script src="projects.js"></script>
+<script>
+const PLAY='<svg viewBox="0 0 24 24"><path d="M6 4l15 8-15 8z"/></svg>';
+const CATS={
+  all:{ar:"الكل",en:"All"},
+  motion:{ar:"موشن جرافيك",en:"Motion Graphics"},
+  washington:{ar:"واشنطن ميكس",en:"Washington Mix"},
+  reels:{ar:"ريلز",en:"Reels"},
+  ads:{ar:"إعلانات",en:"Ads"},
+  ai:{ar:"فيديوهات AI",en:"AI Video"},
+  other:{ar:"أخرى",en:"Other"},
+  news:{ar:"أخبار · العربية والحدث",en:"News · Al Arabiya & Al Hadath"}
+};
+const MARQ={ar:["فيديوهات AI","قصص وثائقية","ريلز","موشن جرافيك","إعلانات","كاينتك تايب","3D","كولاج","يوتيوب"],
+            en:["AI Video","Documentary","Reels","Motion Graphics","Ads","Kinetic Type","3D","Collage","YouTube"]};
+const STYLES={ar:["فيديوهات AI","سينمائي","كولاج كت-آوت","مينيمال","بوستر إديتوريال","3D كاميرا","ترجمة وكابشن","ساوند ديزاين"],
+              en:["AI video","Cinematic","Collage cut-outs","Minimal","Editorial poster","3D camera","Captions","Sound design"]};
+const SOFTWARE=["DaVinci Resolve","Final Cut Pro","Avid Media Composer","Vegas Pro","Filmora","Premiere Rush","Adobe Audition","Media Encoder","Photoshop","Illustrator","Cinema 4D","Blender","Element 3D","Alight Motion","VN Editor","InShot","Canva"];
+const AI_TOOLS=["Google Veo","OpenAI Sora","Kling","Runway","Luma","Hailuo","Seedance","Pika","Higgsfield","Midjourney","Adobe Firefly","Nano Banana","Flux","ElevenLabs","HeyGen","Topaz Video AI"];
+const P=window.PROJECTS||[], C=window.CONTACT||{}, R=window.SHOWREEL||{};
+let lang="en", filter="all";
+try{lang=localStorage.getItem("lang")||"en"}catch(e){}
+const t=o=>o?(o[lang]??o.en??o.ar??""):"";
+
+function applyLang(){
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+  document.querySelectorAll("[data-ar]").forEach(el=>el.innerHTML=el.dataset[lang]);
+  document.getElementById("langBtn").textContent=lang==="ar"?"EN":"عربي";
+  document.title=lang==="ar"?"إبراهيم ناصف — فيديو إديتور وموشن ديزاينر":"Ibrahem Nasef — Video Editor & Motion Designer";
+  const words=MARQ[lang].map((w,i)=>`<span class="${i%2?"o":""}">${w}</span>`).join("");
+  document.getElementById("mq").innerHTML=words+words;
+  document.getElementById("aiw").innerHTML=AI_TOOLS.map(x=>`<span>${x}</span>`).join("");
+  document.getElementById("sw").innerHTML=SOFTWARE.map(x=>`<span>${x}</span>`).join("");
+  document.getElementById("styles").innerHTML=STYLES[lang].map(s=>`<span>${s}</span>`).join("");
+  renderReel();renderRail();renderFilters();renderGrid();renderContact();
+}
+
+function renderReel(){
+  const box=document.getElementById("reelBox");
+  if(R.file){
+    box.innerHTML=`<video src="${R.file}" poster="${R.poster||""}" muted loop playsinline autoplay></video>`;
+    box.onclick=()=>openLB(R.file,lang==="ar"?"الشوريل":"Showreel");
+  }else{
+    box.innerHTML=`<div class="reel-empty"><div><div class="play">${PLAY}</div>
+      <p>${lang==="ar"?"الشوريل قريباً":"Showreel coming soon"}</p><small>2026 · REEL</small></div></div>`;
+  }
+}
+
+function cardHTML(p){
+  return `<article class="card ${p.orientation||"horizontal"}" data-i="${P.indexOf(p)}">
+      ${p.preview?`<video src="${p.preview}" poster="${p.poster||""}" muted loop playsinline preload="none"></video>`
+                 :`<img src="${p.poster||""}" alt="${t(p.title)}" loading="lazy">`}
+      <div class="mini-play">${PLAY}</div>
+      <div class="info"><div class="cat">${t(p.client)||t(CATS[p.category]||CATS.other)}</div>
+      <h3>${t(p.title)}</h3></div></article>`;
+}
+function wireCards(root){
+  root.querySelectorAll(".card[data-i]").forEach(c=>{
+    const v=c.querySelector("video"),p=P[c.dataset.i];
+    c.onmouseenter=()=>v&&v.play().catch(()=>{});
+    c.onmouseleave=()=>{if(v){v.pause();v.currentTime=0}};
+    c.onclick=()=>openLB(p.file,t(p.title));
+  });
+  observe(root.querySelectorAll(".card"));
+}
+function renderRail(){
+  const r=document.getElementById("rail"), list=P.filter(p=>p.category==="news");
+  document.getElementById("news").style.display=list.length?"":"none";
+  r.innerHTML=list.map(cardHTML).join("");
+  wireCards(r);
+}
+
+function renderFilters(){
+  const used=["all",...Object.keys(CATS).filter(k=>k!=="all"&&P.some(p=>p.category===k))];
+  const keys=P.length?used:["all","washington","reels","motion","ads"];
+  document.getElementById("filters").innerHTML=keys.map(k=>{
+    const n=k==="all"?P.length:P.filter(p=>p.category===k).length;
+    return `<button class="chip ${k===filter?"on":""}" data-k="${k}">${t(CATS[k])}<sup>${n}</sup></button>`}).join("");
+  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{filter=b.dataset.k;renderFilters();renderGrid()});
+}
+
+function renderGrid(){
+  const g=document.getElementById("grid");
+  const list=P.filter(p=>filter==="all"||p.category===filter);
+  if(!list.length){
+    const ph=["horizontal","vertical","vertical","horizontal","vertical","square"];
+    g.innerHTML=ph.map((o,i)=>`<div class="card ph ${o}"><div class="ph-inner"><b>0${i+1}</b>
+      <span>${lang==="ar"?"مشروع قريباً":"Project coming soon"}</span></div></div>`).join("");
+  }else{
+    g.innerHTML=list.map(cardHTML).join("");
+  }
+  wireCards(g);
+}
+
+function renderContact(){
+  const links=[];
+  if(C.email)links.push(["Email","mailto:"+C.email]);
+  if(C.whatsapp)links.push(["WhatsApp","https://wa.me/"+C.whatsapp]);
+  if(C.phone)links.push([lang==="ar"?"اتصل 01067302495":"Call +20 106 730 2495","tel:"+C.phone]);
+  if(C.behance)links.push(["Behance",C.behance]);
+  if(C.linkedin)links.push(["LinkedIn",C.linkedin]);
+  if(C.instagram)links.push(["Instagram",C.instagram]);
+  if(C.youtube)links.push(["YouTube",C.youtube]);
+  document.getElementById("socials").innerHTML=links.map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener">${n} ↗</a>`).join("");
+  const main=document.getElementById("mainLink");
+  main.href=links[0]?links[0][1]:"#contact";
+}
+
+const lb=document.getElementById("lb"),lv=document.getElementById("lbVideo");
+function openLB(src,title){if(!src)return;lv.src=src;document.getElementById("lbTitle").textContent=title;lb.classList.add("open");lv.play().catch(()=>{})}
+function closeLB(){lb.classList.remove("open");lv.pause();lv.removeAttribute("src");lv.load()}
+document.getElementById("lbClose").onclick=closeLB;
+lb.onclick=e=>{if(e.target===lb)closeLB()};
+addEventListener("keydown",e=>{if(e.key==="Escape")closeLB()});
+
+const io=new IntersectionObserver(es=>es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add("in"),i*70);io.unobserve(e.target)}}),{threshold:.12});
+function observe(els){els.forEach(el=>io.observe(el))}
+observe(document.querySelectorAll(".reveal"));
+
+const nav=document.getElementById("nav");
+addEventListener("scroll",()=>nav.classList.toggle("solid",scrollY>40),{passive:true});
+document.getElementById("langBtn").onclick=()=>{lang=lang==="ar"?"en":"ar";try{localStorage.setItem("lang",lang)}catch(e){};applyLang()};
+document.getElementById("yr").textContent=new Date().getFullYear();
+applyLang();
+</script>
+</body>
+</html>
