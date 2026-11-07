@@ -24,6 +24,18 @@ window.PROJECTS = [
     client: { ar: "واشنطن آي", en: "Washington Eye" }, tools: ["Ae", "Pr"]
   },
   {
+    file: "videos/youtube/doolittle-raid.mp4", poster: "videos/youtube/doolittle-raid.jpg", preview: "videos/youtube/doolittle-raid-preview.mp4",
+    category: "youtube", orientation: "horizontal", youtube: "https://youtu.be/h50kayNBk6o",
+    title: { ar: "غارة دوليتل — 16 قاذفة ضربت طوكيو", en: "The Doolittle Raid — 16 Bombers Over Tokyo" },
+    client: { ar: "فيلم وثائقي على يوتيوب · 10:39", en: "YouTube documentary · 10:39" }, tools: ["Ae", "Pr", "AI"]
+  },
+  {
+    file: "videos/youtube/flight19-short.mp4", poster: "videos/youtube/flight19-short.jpg", preview: "videos/youtube/flight19-short-preview.mp4",
+    category: "youtube", orientation: "vertical", youtube: "https://youtube.com/shorts/-auvwgB9i2M",
+    title: { ar: "لغز الرحلة 19", en: "The Flight 19 Mystery" },
+    client: { ar: "يوتيوب شورتس · 2:24", en: "YouTube Shorts · 2:24" }, tools: ["Ae", "Pr", "AI"]
+  },
+  {
     file: "videos/motion/collage-architecture.mp4", poster: "videos/motion/collage-architecture.jpg", preview: "videos/motion/collage-architecture-preview.mp4",
     category: "motion", orientation: "vertical",
     title: { ar: "موشن كولاج — شركة مقاولات", en: "Collage Motion — Architecture Brand" }, tools: ["Ae"]

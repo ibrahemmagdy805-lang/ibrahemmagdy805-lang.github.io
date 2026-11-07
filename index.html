@@ -208,6 +208,7 @@ footer{padding:28px var(--pad);border-top:1px solid var(--line);display:flex;jus
 .lb video{max-height:88vh;max-width:min(100%,1400px);border-radius:14px;background:#000}
 .lb-close{position:absolute;top:18px;inset-inline-end:18px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);font-size:22px}
 .lb-title{position:absolute;bottom:18px;inset-inline:0;text-align:center;font-family:var(--display);color:var(--mute)}
+.lb-yt{color:var(--accent);font-weight:600}
 
 [dir=rtl]{--display:"Readex Pro",system-ui,sans-serif;--body:"Readex Pro",system-ui,sans-serif}
 /* Arabic text must never get mono font or letter-spacing (breaks letter joining) */
@@ -338,6 +339,7 @@ const CATS={
   all:{ar:"الكل",en:"All"},
   motion:{ar:"موشن جرافيك",en:"Motion Graphics"},
   washington:{ar:"واشنطن ميكس",en:"Washington Mix"},
+  youtube:{ar:"يوتيوب · وثائقي",en:"YouTube · Story Docs"},
   reels:{ar:"ريلز",en:"Reels"},
   ads:{ar:"إعلانات",en:"Ads"},
   ai:{ar:"فيديوهات AI",en:"AI Video"},
@@ -394,7 +396,7 @@ function wireCards(root){
     const v=c.querySelector("video"),p=P[c.dataset.i];
     c.onmouseenter=()=>v&&v.play().catch(()=>{});
     c.onmouseleave=()=>{if(v){v.pause();v.currentTime=0}};
-    c.onclick=()=>openLB(p.file,t(p.title));
+    c.onclick=()=>openLB(p.file,t(p.title),p.youtube);
   });
   observe(root.querySelectorAll(".card"));
 }
@@ -442,7 +444,7 @@ function renderContact(){
 }
 
 const lb=document.getElementById("lb"),lv=document.getElementById("lbVideo");
-function openLB(src,title){if(!src)return;lv.src=src;document.getElementById("lbTitle").textContent=title;lb.classList.add("open");lv.play().catch(()=>{})}
+function openLB(src,title,yt){if(!src)return;lv.src=src;const lt=document.getElementById("lbTitle");lt.textContent=title;if(yt){const a=document.createElement("a");a.href=yt;a.target="_blank";a.rel="noopener";a.className="lb-yt";a.textContent=(lang==="ar"?"  ·  شوفه على يوتيوب ↗":"  ·  Watch on YouTube ↗");lt.appendChild(a)}lb.classList.add("open");lv.play().catch(()=>{})}
 function closeLB(){lb.classList.remove("open");lv.pause();lv.removeAttribute("src");lv.load()}
 document.getElementById("lbClose").onclick=closeLB;
 lb.onclick=e=>{if(e.target===lb)closeLB()};
