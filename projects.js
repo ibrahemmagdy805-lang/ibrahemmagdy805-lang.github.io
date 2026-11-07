@@ -99,7 +99,7 @@ window.PROJECTS = [
 ];
 
 /* الفيديو الرئيسي (Showreel) — سيبه فاضي لحد ما يتعمل */
-window.SHOWREEL = { file: "", poster: "" };
+window.SHOWREEL = { file: "videos/showreel/showreel.mp4", poster: "videos/showreel/showreel.jpg" };
 
 /* وسائل التواصل — اللي يتساب فاضي مش هيظهر */
 window.CONTACT = {

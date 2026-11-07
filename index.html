@@ -90,6 +90,10 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,6vw,84px);lin
 /* showreel */
 .reel{position:relative;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:var(--card);border:1px solid var(--line);cursor:pointer}
 .reel video,.reel img{width:100%;height:100%;object-fit:cover}
+.reel-cta{position:absolute;inset-inline-start:28px;bottom:26px;z-index:3;display:flex;align-items:center;gap:14px;font-family:var(--display);font-weight:500;font-size:18px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6);transition:transform .3s}
+.reel-cta .play{width:64px;margin:0}
+.reel:hover .reel-cta{transform:scale(1.05)}
+@media(max-width:600px){.reel-cta{inset-inline-start:14px;bottom:14px;font-size:14px}.reel-cta .play{width:46px}}
 .reel-empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;
   background:repeating-linear-gradient(-45deg,transparent 0 22px,rgba(255,255,255,.015) 22px 44px)}
 .play{width:clamp(70px,9vw,110px);aspect-ratio:1;border-radius:50%;background:var(--accent);display:grid;place-items:center;margin:0 auto 18px;box-shadow:0 0 0 0 rgba(229,56,43,.5);animation:pulse 2.2s infinite}
@@ -368,7 +372,8 @@ function applyLang(){
 function renderReel(){
   const box=document.getElementById("reelBox");
   if(R.file){
-    box.innerHTML=`<video src="${R.file}" poster="${R.poster||""}" muted loop playsinline autoplay></video>`;
+    box.innerHTML=`<video src="${R.file}" poster="${R.poster||""}" muted loop playsinline autoplay preload="metadata"></video>
+      <div class="reel-cta"><div class="play">${PLAY}</div><span>${lang==="ar"?"شغّل بالصوت":"Play with sound"}</span></div>`;
     box.onclick=()=>openLB(R.file,lang==="ar"?"الشوريل":"Showreel");
   }else{
     box.innerHTML=`<div class="reel-empty"><div><div class="play">${PLAY}</div>
